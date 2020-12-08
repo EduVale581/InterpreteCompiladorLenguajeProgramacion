@@ -1,7 +1,6 @@
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Scanner;
 
 /*
@@ -99,6 +98,18 @@ public class main {
                         else if (programaSub[i].charAt(0) == '$') {
                             if(programaSub[i].contains("+") || programaSub[i].contains("-") || programaSub[i].contains("/") || programaSub[i].contains("*") || programaSub[i].contains("%")){
                                 
+                                for (int j = 0; j <programaSub[i].length()-1; j++) {
+                                    if(programaSub[i].charAt(j) == '+' || programaSub[i].charAt(j) == '-' || programaSub[i].charAt(j) == '/' || programaSub[i].charAt(j) == '*' || programaSub[i].charAt(j) == '%'){
+                                        if(programaSub[i].charAt(j+1) == '+' || programaSub[i].charAt(j+1) == '-' || programaSub[i].charAt(j+1) == '/' || programaSub[i].charAt(j+1) == '*' || programaSub[i].charAt(j+1) == '%'){
+                                            System.out.println(programaSub[i]);
+                                            System.out.println("Error Sintaxis variable");
+                                            System.exit(0);
+                                        }
+                                        
+                                    }
+                                    
+                                    
+                                }
                             }
                             else{
                                 if(programaSub[i].matches("\\$[a-z][a-z0-9]*=[0-9];") || programaSub[i].matches("\\$[a-z][a-z0-9]*;") || programaSub[i].matches("\\$[a-z][a-z0-9]*=\\$[a-z][a-z0-9]*;")){
@@ -146,6 +157,7 @@ public class main {
         for (int i = 0; i < programa.size(); i++) {
             System.out.println(programa.get(i));
         }
+        
         
         //System.out.println(programa.get(2));
     }
