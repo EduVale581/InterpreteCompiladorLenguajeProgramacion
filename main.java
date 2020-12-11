@@ -78,6 +78,14 @@ public class main {
                         
                         
                     }
+                    else if(line.contains("read") && (line.contains("+") || line.contains("-") || line.contains("/") || line.contains("*") || line.contains("%") || line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$"))){
+                        System.out.println("Error en read: " + line);
+                        System.exit(0);
+                    }
+                    else if(line.contains("write") && (line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$"))){
+                        System.out.println("Error en write: " + line);
+                        System.exit(0);
+                    }
                     
                     String [] programaSub = line.split(" ");
                     for (int i = 0; i < programaSub.length; i++) {
@@ -94,6 +102,7 @@ public class main {
                                 System.exit(0);
                                 
                             }
+                            
                         }
                         else if (programaSub[i].charAt(0) == '$') {
                             if(programaSub[i].contains("+") || programaSub[i].contains("-") || programaSub[i].contains("/") || programaSub[i].contains("*") || programaSub[i].contains("%")){
