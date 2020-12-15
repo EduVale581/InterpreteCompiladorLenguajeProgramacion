@@ -106,19 +106,27 @@ public class main {
                         }
                         else if (programaSub[i].charAt(0) == '$') {
                             if(programaSub[i].contains("+") || programaSub[i].contains("-") || programaSub[i].contains("/") || programaSub[i].contains("*") || programaSub[i].contains("%")){
-                                
-                                for (int j = 0; j <programaSub[i].length()-1; j++) {
-                                    if(programaSub[i].charAt(j) == '+' || programaSub[i].charAt(j) == '-' || programaSub[i].charAt(j) == '/' || programaSub[i].charAt(j) == '*' || programaSub[i].charAt(j) == '%'){
-                                        if(programaSub[i].charAt(j+1) == '+' || programaSub[i].charAt(j+1) == '-' || programaSub[i].charAt(j+1) == '/' || programaSub[i].charAt(j+1) == '*' || programaSub[i].charAt(j+1) == '%'){
-                                            System.out.println(programaSub[i]);
-                                            System.out.println("Error Sintaxis variable");
-                                            System.exit(0);
-                                        }
-                                        
-                                    }
-                                    
-                                    
+                                if(programaSub[i].contains("<") || programaSub[i].contains("<=") || programaSub[i].contains(">") || programaSub[i].contains(">=") || programaSub[i].contains("==") || programaSub[i].contains("!=")){
+                                    System.out.println(programaSub[i]);
+                                    System.out.println("Error Sintaxis elemento invalido");
+                                    System.exit(0);
                                 }
+                                else{
+                                    for (int j = 0; j <programaSub[i].length()-1; j++) {
+                                        if(programaSub[i].charAt(j) == '+' || programaSub[i].charAt(j) == '-' || programaSub[i].charAt(j) == '/' || programaSub[i].charAt(j) == '*' || programaSub[i].charAt(j) == '%'){
+                                            if(programaSub[i].charAt(j+1) == '+' || programaSub[i].charAt(j+1) == '-' || programaSub[i].charAt(j+1) == '/' || programaSub[i].charAt(j+1) == '*' || programaSub[i].charAt(j+1) == '%'){
+                                                System.out.println(programaSub[i]);
+                                                System.out.println("Error Sintaxis elementos consecutivos");
+                                                System.exit(0);
+                                            }
+
+                                        }
+
+
+                                    }
+                                }
+                                
+                                
                             }
                             else{
                                 if(programaSub[i].matches("\\$[a-z][a-z0-9]*=[0-9];") || programaSub[i].matches("\\$[a-z][a-z0-9]*;") || programaSub[i].matches("\\$[a-z][a-z0-9]*=\\$[a-z][a-z0-9]*;")){
@@ -126,7 +134,7 @@ public class main {
                                 }
                                 else{
                                     System.out.println(programaSub[i]);
-                                    System.out.println("Error Sintaxis variable");
+                                    System.out.println("Error Sintaxis asignacion");
                                     System.exit(0);
                                 }
                             }
