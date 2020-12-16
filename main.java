@@ -78,14 +78,56 @@ public class main {
                         
                         
                     }
-                    else if(line.contains("read") && (line.contains("+") || line.contains("-") || line.contains("/") || line.contains("*") || line.contains("%") || line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$"))){
-                        System.out.println("Error en read: " + line);
-                        System.exit(0);
+                    else if(line.contains("read")){
+                        if(line.contains("+") || line.contains("-") || line.contains("/") || line.contains("*") || line.contains("%") || line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$")){
+                           System.out.println("Error en read: " + line);
+                            System.exit(0); 
+                        }
+                        else if(line.contains("$0") || line.contains("$1") || line.contains("$2") || line.contains("$3") || line.contains("$4") || line.contains("$5") || line.contains("$6") || line.contains("$7") || line.contains("$8") || line.contains("$9")){
+                            System.out.println("Error en read: " + line);
+                            System.exit(0); 
+                        }
+                        
                     }
                     else if(line.contains("write") && (line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$"))){
-                        System.out.println("Error en write: " + line);
-                        System.exit(0);
+                        if(line.contains("+") || line.contains("-") || line.contains("/") || line.contains("*") || line.contains("%") || line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$")){
+                           System.out.println("Error en write: " + line);
+                            System.exit(0); 
+                        }
+                        else if(line.contains("$0") || line.contains("$1") || line.contains("$2") || line.contains("$3") || line.contains("$4") || line.contains("$5") || line.contains("$6") || line.contains("$7") || line.contains("$8") || line.contains("$9")){
+                            System.out.println("Error en write: " + line);
+                            System.exit(0); 
+                        }
                     }
+                    else if(line.charAt(0) == 'w' && line.charAt(1) == 'h'){
+                        if(line.matches("while\\(\\$[a-z][a-z0-9]*==\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*<=\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*>=\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*!=\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*<\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*>\\$[a-z][a-z0-9]*\\)do") ||
+                                line.matches("while\\(\\$[a-z][a-z0-9]*==[0-9][0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*<=[0-9][0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*>=[0-9][0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*!=[0-9][0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*<[0-9][0-9]*\\)do") || line.matches("while\\(\\$[a-z][a-z0-9]*>[0-9][0-9]*\\)do") || 
+                                line.matches("while\\([0-9][0-9]*==[0-9][0-9]*\\)do") || line.matches("while\\([0-9][0-9]*<=[0-9][0-9]*\\)do") || line.matches("while\\([0-9][0-9]*>=[0-9][0-9]*\\)do") || line.matches("while\\([0-9][0-9]*!=[0-9][0-9]*\\)do") || line.matches("while\\([0-9][0-9]*<[0-9][0-9]*\\)do") || line.matches("while\\([0-9][0-9]*>[0-9][0-9]*\\)do") || 
+                                line.matches("while\\([0-9][0-9]*==\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\([0-9][0-9]*<=\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\([0-9][0-9]*>=\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\([0-9][0-9]*!=\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\([0-9][0-9]*<\\$[a-z][a-z0-9]*\\)do") || line.matches("while\\([0-9][0-9]*>\\$[a-z][a-z0-9]*\\)do")){
+                            
+                        }
+                        else{
+                            System.out.println("Error en while: " + line);
+                            System.exit(0); 
+                        }
+                        
+                    }
+                    else if(line.charAt(0) == 'i' && line.charAt(1) == 'f'){
+                        if(line.matches("if\\(\\$[a-z][a-z0-9]*==\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*<=\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*>=\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*!=\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*<\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*>\\$[a-z][a-z0-9]*\\)then") ||
+                                line.matches("if\\(\\$[a-z][a-z0-9]*==[0-9][0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*<=[0-9][0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*>=[0-9][0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*!=[0-9][0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*<[0-9][0-9]*\\)then") || line.matches("if\\(\\$[a-z][a-z0-9]*>[0-9][0-9]*\\)then") || 
+                                line.matches("if\\([0-9][0-9]*==[0-9][0-9]*\\)then") || line.matches("if\\([0-9][0-9]*<=[0-9][0-9]*\\)then") || line.matches("if\\([0-9][0-9]*>=[0-9][0-9]*\\)then") || line.matches("if\\([0-9][0-9]*!=[0-9][0-9]*\\)then") || line.matches("if\\([0-9][0-9]*<[0-9][0-9]*\\)then") || line.matches("if\\([0-9][0-9]*>[0-9][0-9]*\\)then") || 
+                                line.matches("if\\([0-9][0-9]*==\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\([0-9][0-9]*<=\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\([0-9][0-9]*>=\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\([0-9][0-9]*!=\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\([0-9][0-9]*<\\$[a-z][a-z0-9]*\\)then") || line.matches("if\\([0-9][0-9]*>\\$[a-z][a-z0-9]*\\)then")){
+                            
+                        }
+                        else{
+                            System.out.println("Error en if: " + line);
+                            System.exit(0); 
+                        }
+                        
+                    }
+                    
+                    
+                    
                     
                     String [] programaSub = line.split(" ");
                     for (int i = 0; i < programaSub.length; i++) {
@@ -105,7 +147,12 @@ public class main {
                             
                         }
                         else if (programaSub[i].charAt(0) == '$') {
-                            if(programaSub[i].contains("+") || programaSub[i].contains("-") || programaSub[i].contains("/") || programaSub[i].contains("*") || programaSub[i].contains("%")){
+                            if(programaSub[i].charAt(1) == '0' || programaSub[i].charAt(1) == '1' || programaSub[i].charAt(1) == '2'|| programaSub[i].charAt(1) == '3'|| programaSub[i].charAt(1) == '4'|| programaSub[i].charAt(1) == '5'||programaSub[i].charAt(1) == '6'||programaSub[i].charAt(1) == '7'||programaSub[i].charAt(1) == '8'||programaSub[i].charAt(1) == '9'){
+                                System.out.println(programaSub[i]);
+                                System.out.println("Error Sintaxis elemento invalido");
+                                System.exit(0);
+                            }
+                            else if(programaSub[i].contains("+") || programaSub[i].contains("-") || programaSub[i].contains("/") || programaSub[i].contains("*") || programaSub[i].contains("%")){
                                 if(programaSub[i].contains("<") || programaSub[i].contains("<=") || programaSub[i].contains(">") || programaSub[i].contains(">=") || programaSub[i].contains("==") || programaSub[i].contains("!=")){
                                     System.out.println(programaSub[i]);
                                     System.out.println("Error Sintaxis elemento invalido");
@@ -119,14 +166,24 @@ public class main {
                                                 System.out.println("Error Sintaxis elementos consecutivos");
                                                 System.exit(0);
                                             }
+                                            
+                                            
 
                                         }
-
-
+                                        if(programaSub[i].charAt(j) == '$' && (programaSub[i].charAt(j+1) == '0' || programaSub[i].charAt(j+1) == '1' || programaSub[i].charAt(j+1) == '2' || programaSub[i].charAt(j+1) == '3'|| programaSub[i].charAt(j+1) == '4'|| programaSub[i].charAt(j+1) == '5'|| programaSub[i].charAt(j+1) == '6'|| programaSub[i].charAt(j+1) == '7'|| programaSub[i].charAt(j+1) == '8'|| programaSub[i].charAt(j+1) == '9')){
+                                            System.out.println(programaSub[i]);
+                                            System.out.println("Error");
+                                            System.exit(0);
+                                        }
+                                        
                                     }
-                                }
-                                
-                                
+                                    //System.exit(0);
+                                    if(!programaSub[i].matches("[\\$\\+\\-\\*\\/\\%a-z0-9;=]+")){
+                                        System.out.println(programaSub[i]);
+                                        System.out.println("Error");
+                                        System.exit(0);
+                                    }
+                                } 
                             }
                             else{
                                 if(programaSub[i].matches("\\$[a-z][a-z0-9]*=[0-9];") || programaSub[i].matches("\\$[a-z][a-z0-9]*;") || programaSub[i].matches("\\$[a-z][a-z0-9]*=\\$[a-z][a-z0-9]*;")){
