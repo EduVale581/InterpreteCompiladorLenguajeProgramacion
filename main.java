@@ -22,6 +22,7 @@ public class main {
         ArrayList<String> programa = new ArrayList<>();
         ArrayList<String> palabrasReservadas = new ArrayList<>();
         ArrayList<String> simbolosReservados = new ArrayList<>();
+        Interprete interprete = new Interprete();
         simbolosReservados.add("$");
         simbolosReservados.add("+");
         simbolosReservados.add("-");
@@ -48,7 +49,7 @@ public class main {
         simbolosReservados.add(")");
         
         try {
-            Scanner input = new Scanner(new File("src/prog.txt"));
+            Scanner input = new Scanner(new File("prog.txt"));
             String prueba = "$a=10;";
             
             while (input.hasNextLine()) {
@@ -80,10 +81,12 @@ public class main {
                     }
                     else if(line.contains("read")){
                         if(line.contains("+") || line.contains("-") || line.contains("/") || line.contains("*") || line.contains("%") || line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$")){
-                           System.out.println("Error en read: " + line);
+                            interprete.interpretar(programa);
+                            System.out.println("Error en read: " + line);
                             System.exit(0); 
                         }
                         else if(line.contains("$0") || line.contains("$1") || line.contains("$2") || line.contains("$3") || line.contains("$4") || line.contains("$5") || line.contains("$6") || line.contains("$7") || line.contains("$8") || line.contains("$9")){
+                            interprete.interpretar(programa);
                             System.out.println("Error en read: " + line);
                             System.exit(0); 
                         }
@@ -91,10 +94,12 @@ public class main {
                     }
                     else if(line.contains("write") && (line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$"))){
                         if(line.contains("+") || line.contains("-") || line.contains("/") || line.contains("*") || line.contains("%") || line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$")){
-                           System.out.println("Error en write: " + line);
+                            interprete.interpretar(programa);
+                            System.out.println("Error en write: " + line);
                             System.exit(0); 
                         }
                         else if(line.contains("$0") || line.contains("$1") || line.contains("$2") || line.contains("$3") || line.contains("$4") || line.contains("$5") || line.contains("$6") || line.contains("$7") || line.contains("$8") || line.contains("$9")){
+                            interprete.interpretar(programa);
                             System.out.println("Error en write: " + line);
                             System.exit(0); 
                         }
@@ -107,6 +112,7 @@ public class main {
                             
                         }
                         else{
+                            interprete.interpretar(programa);
                             System.out.println("Error en while: " + line);
                             System.exit(0); 
                         }
@@ -120,6 +126,7 @@ public class main {
                             
                         }
                         else{
+                            interprete.interpretar(programa);
                             System.out.println("Error en if: " + line);
                             System.exit(0); 
                         }
@@ -140,6 +147,7 @@ public class main {
                                 
                             }
                             if(!existe){
+                                interprete.interpretar(programa);
                                 System.out.println("Error Palabras reservadas");
                                 System.exit(0);
                                 
@@ -148,12 +156,14 @@ public class main {
                         }
                         else if (programaSub[i].charAt(0) == '$') {
                             if(programaSub[i].charAt(1) == '0' || programaSub[i].charAt(1) == '1' || programaSub[i].charAt(1) == '2'|| programaSub[i].charAt(1) == '3'|| programaSub[i].charAt(1) == '4'|| programaSub[i].charAt(1) == '5'||programaSub[i].charAt(1) == '6'||programaSub[i].charAt(1) == '7'||programaSub[i].charAt(1) == '8'||programaSub[i].charAt(1) == '9'){
+                                interprete.interpretar(programa);
                                 System.out.println(programaSub[i]);
                                 System.out.println("Error Sintaxis elemento invalido");
                                 System.exit(0);
                             }
                             else if(programaSub[i].contains("+") || programaSub[i].contains("-") || programaSub[i].contains("/") || programaSub[i].contains("*") || programaSub[i].contains("%")){
                                 if(programaSub[i].contains("<") || programaSub[i].contains("<=") || programaSub[i].contains(">") || programaSub[i].contains(">=") || programaSub[i].contains("==") || programaSub[i].contains("!=")){
+                                    interprete.interpretar(programa);
                                     System.out.println(programaSub[i]);
                                     System.out.println("Error Sintaxis elemento invalido");
                                     System.exit(0);
@@ -162,6 +172,7 @@ public class main {
                                     for (int j = 0; j <programaSub[i].length()-1; j++) {
                                         if(programaSub[i].charAt(j) == '+' || programaSub[i].charAt(j) == '-' || programaSub[i].charAt(j) == '/' || programaSub[i].charAt(j) == '*' || programaSub[i].charAt(j) == '%'){
                                             if(programaSub[i].charAt(j+1) == '+' || programaSub[i].charAt(j+1) == '-' || programaSub[i].charAt(j+1) == '/' || programaSub[i].charAt(j+1) == '*' || programaSub[i].charAt(j+1) == '%'){
+                                                interprete.interpretar(programa);
                                                 System.out.println(programaSub[i]);
                                                 System.out.println("Error Sintaxis elementos consecutivos");
                                                 System.exit(0);
@@ -171,6 +182,7 @@ public class main {
 
                                         }
                                         if(programaSub[i].charAt(j) == '$' && (programaSub[i].charAt(j+1) == '0' || programaSub[i].charAt(j+1) == '1' || programaSub[i].charAt(j+1) == '2' || programaSub[i].charAt(j+1) == '3'|| programaSub[i].charAt(j+1) == '4'|| programaSub[i].charAt(j+1) == '5'|| programaSub[i].charAt(j+1) == '6'|| programaSub[i].charAt(j+1) == '7'|| programaSub[i].charAt(j+1) == '8'|| programaSub[i].charAt(j+1) == '9')){
+                                            interprete.interpretar(programa);
                                             System.out.println(programaSub[i]);
                                             System.out.println("Error");
                                             System.exit(0);
@@ -179,6 +191,7 @@ public class main {
                                     }
                                     //System.exit(0);
                                     if(!programaSub[i].matches("[\\$\\+\\-\\*\\/\\%a-z0-9;=]+")){
+                                        interprete.interpretar(programa);
                                         System.out.println(programaSub[i]);
                                         System.out.println("Error");
                                         System.exit(0);
@@ -190,6 +203,7 @@ public class main {
                                 
                                 }
                                 else{
+                                    interprete.interpretar(programa);
                                     System.out.println(programaSub[i]);
                                     System.out.println("Error Sintaxis asignacion");
                                     System.exit(0);
@@ -206,6 +220,7 @@ public class main {
                                 
                             }
                             else{
+                                interprete.interpretar(programa);
                                 System.out.println(programaSub[i]);
                                 System.out.println("Error Sintaxis condición");
                                 System.exit(0);
@@ -227,10 +242,14 @@ public class main {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        // por ahora lo estoy ejecutando si el programa sale bien y no tiene falla de sintaxis.
         
-        for (int i = 0; i < programa.size(); i++) {
+        interprete.interpretar(programa);
+
+        /*for (int i = 0; i < programa.size(); i++) {
             System.out.println(programa.get(i));
-        }
+        }*/
         
         
         //System.out.println(programa.get(2));
