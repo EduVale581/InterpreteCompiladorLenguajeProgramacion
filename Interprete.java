@@ -31,6 +31,7 @@ public class Interprete {
                 }
                 else{
                     System.out.println("Error de sintaxis, IF sin termino");
+                    System.exit(0);
                 }
                 
             }else if (linea.contains("while") && !linea.contains("wend")){
@@ -49,6 +50,7 @@ public class Interprete {
                 }
                 else{
                     System.out.println("Error de sintaxis, While sin termino");
+                    System.exit(0);
                 }
             } else if(linea.contains("write")){
                 funcionWrite(linea);
@@ -195,6 +197,7 @@ public class Interprete {
             
         }else{
             System.out.println("Error de inicializacion de variable");
+            System.exit(0);
         }
         return resultado;
     }
@@ -207,6 +210,7 @@ public class Interprete {
             this.variables.put(nombreVariable, valor);
         } catch (Exception e) {
             System.out.println("Error de lectura por teclado, solo se aceptan Enteros");
+            System.exit(0);
         }
         
 
@@ -231,6 +235,7 @@ public class Interprete {
             
         }else{
             System.out.println("Error de inicializacion de variable");
+            System.exit(0);
         }
     }
 
@@ -272,6 +277,7 @@ public class Interprete {
                 
             }else{
                 System.out.println("Error de inicializacion de variable");
+                System.exit(0);
             }
         }
         else{
