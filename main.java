@@ -49,7 +49,7 @@ public class main {
         simbolosReservados.add(")");
         
         try {
-            Scanner input = new Scanner(new File("prog.txt"));
+            Scanner input = new Scanner(new File("src/prog.txt"));
             String prueba = "$a=10;";
             
             while (input.hasNextLine()) {
@@ -199,7 +199,7 @@ public class main {
                                 } 
                             }
                             else{
-                                if(programaSub[i].matches("\\$[a-z][a-z0-9]*=[0-9];") || programaSub[i].matches("\\$[a-z][a-z0-9]*;") || programaSub[i].matches("\\$[a-z][a-z0-9]*=\\$[a-z][a-z0-9]*;")){
+                                if(programaSub[i].matches("\\$[a-z][a-z0-9]*=[0-9]+;") || programaSub[i].matches("\\$[a-z][a-z0-9]*;") || programaSub[i].matches("\\$[a-z][a-z0-9]*=\\$[a-z][a-z0-9]*;")){
                                 
                                 }
                                 else{
