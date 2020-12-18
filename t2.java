@@ -49,7 +49,7 @@ public class t2 {
         simbolosReservados.add(")");
 
         try {
-            Scanner input = new Scanner(new File("src/prog.txt"));
+            Scanner input = new Scanner(new File(args[0]));
 
             while (input.hasNextLine()) {
                 String line = input.nextLine();
