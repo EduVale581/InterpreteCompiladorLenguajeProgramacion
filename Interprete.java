@@ -30,7 +30,8 @@ public class Interprete {
                     funcionIf(linea, programa, incioIf, finIf);
                 }
                 else{
-                    System.out.println("Error de sintaxis, IF sin termino");
+                    //System.out.println(linea);
+                    System.out.println("Error de sintaxis");
                     System.exit(0);
                 }
                 
@@ -49,7 +50,8 @@ public class Interprete {
                     funcionWhile(linea, programa, incioW, finW);
                 }
                 else{
-                    System.out.println("Error de sintaxis, While sin termino");
+                    //System.out.println(linea);
+                    System.out.println("Error de sintaxis");
                     System.exit(0);
                 }
             } else if(linea.contains("write")){
@@ -105,30 +107,19 @@ public class Interprete {
                 }
             }
             
-            //System.out.println(programa.get(i));
         }
 
-        /*System.out.println("Codnicion: "+ comprobarCondicion(linea));
-        System.out.println(" If -----------------------------------------");
-        instruccionesIf.forEach(s -> System.out.println(s));
-        System.out.println("-----------------------------------------");
-        System.out.println("");
-        System.out.println("Else  -----------------------------------------");
-        instruccionesElse.forEach(s -> System.out.println(s));
-        System.out.println("-----------------------------------------");*/
+        
         if(comprobarCondicion(linea)){
             this.interpretar(instruccionesIf);
-            //System.out.println("_-----------------------------------------");
         }else{
             this.interpretar(instruccionesElse);
-           // System.out.println("_-----------------------------------------");
         }
     }
 
     public Boolean comprobarCondicion(String linea) {
         String condicion = linea.replace("if", "").replace("then", "").replace("while", "").replace("do", "")
                                 .replaceAll(" ", "").replace("(", "").replace(")", "");
-        //System.out.println(condicion);
         Boolean condicicionBoolean = false;
         
         String[] operaciones = condicion.split("<=");
@@ -196,7 +187,8 @@ public class Interprete {
             }
             
         }else{
-            System.out.println("Error de inicializacion de variable");
+            System.out.println(cadena.get(0));
+            System.out.println("Error");
             System.exit(0);
         }
         return resultado;
@@ -234,7 +226,8 @@ public class Interprete {
             }
             
         }else{
-            System.out.println("Error de inicializacion de variable");
+            System.out.println(linea);
+            System.out.println("Error de sintaxis");
             System.exit(0);
         }
     }
@@ -276,7 +269,8 @@ public class Interprete {
                 }
                 
             }else{
-                System.out.println("Error de inicializacion de variable");
+                System.out.println(linea);
+                System.out.println("Error de sintaxis");
                 System.exit(0);
             }
         }
