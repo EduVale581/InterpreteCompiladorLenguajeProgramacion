@@ -49,8 +49,7 @@ public class main {
         simbolosReservados.add(")");
         
         try {
-            Scanner input = new Scanner(new File("src/prog.txt"));
-            String prueba = "$a=10;";
+            Scanner input = new Scanner(new File(args[0]));
             
             while (input.hasNextLine()) {
                 String line = input.nextLine();
