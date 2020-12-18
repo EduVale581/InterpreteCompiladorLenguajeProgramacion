@@ -49,7 +49,7 @@ public class t2 {
         simbolosReservados.add(")");
 
         try {
-            Scanner input = new Scanner(new File(args[0]));
+            Scanner input = new Scanner(new File("src/prog.txt"));
 
             while (input.hasNextLine()) {
                 String line = input.nextLine();
@@ -81,12 +81,14 @@ public class t2 {
                     else if(line.contains("read")){
                         if(line.contains("+") || line.contains("-") || line.contains("/") || line.contains("*") || line.contains("%") || line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$")){
                             interprete.interpretar(programa);
-                            System.out.println("Error en read: " + line);
+                            System.out.println(line);
+                            System.out.println("Error de sintaxis");
                             System.exit(0);
                         }
                         else if(line.contains("$0") || line.contains("$1") || line.contains("$2") || line.contains("$3") || line.contains("$4") || line.contains("$5") || line.contains("$6") || line.contains("$7") || line.contains("$8") || line.contains("$9")){
                             interprete.interpretar(programa);
-                            System.out.println("Error en read: " + line);
+                            System.out.println(line);
+                            System.out.println("Error de sintaxis");
                             System.exit(0);
                         }
 
@@ -94,12 +96,14 @@ public class t2 {
                     else if(line.contains("write") && (line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$"))){
                         if(line.contains("+") || line.contains("-") || line.contains("/") || line.contains("*") || line.contains("%") || line.contains("=") || line.contains("==")|| line.contains("<=") || line.contains(">=")|| line.contains(">") || line.contains("<") || line.contains("!=") || line.contains("$$")){
                             interprete.interpretar(programa);
-                            System.out.println("Error en write: " + line);
+                            System.out.println(line);
+                            System.out.println("Error de sintaxis");
                             System.exit(0);
                         }
                         else if(line.contains("$0") || line.contains("$1") || line.contains("$2") || line.contains("$3") || line.contains("$4") || line.contains("$5") || line.contains("$6") || line.contains("$7") || line.contains("$8") || line.contains("$9")){
                             interprete.interpretar(programa);
-                            System.out.println("Error en write: " + line);
+                            System.out.println(line);
+                            System.out.println("Error de sintaxis");
                             System.exit(0);
                         }
                     }
@@ -112,7 +116,8 @@ public class t2 {
                         }
                         else{
                             interprete.interpretar(programa);
-                            System.out.println("Error en while: " + line);
+                            System.out.println(line);
+                            System.out.println("Error de sintaxis");
                             System.exit(0);
                         }
 
@@ -126,7 +131,8 @@ public class t2 {
                         }
                         else{
                             interprete.interpretar(programa);
-                            System.out.println("Error en if: " + line);
+                            System.out.println(line);
+                            System.out.println("Error de sintaxis");
                             System.exit(0);
                         }
 
@@ -147,7 +153,7 @@ public class t2 {
                             }
                             if(!existe){
                                 interprete.interpretar(programa);
-                                System.out.println("Error Palabras reservadas");
+                                System.out.println("Error de sintaxis");
                                 System.exit(0);
 
                             }
@@ -157,14 +163,14 @@ public class t2 {
                             if(programaSub[i].charAt(1) == '0' || programaSub[i].charAt(1) == '1' || programaSub[i].charAt(1) == '2'|| programaSub[i].charAt(1) == '3'|| programaSub[i].charAt(1) == '4'|| programaSub[i].charAt(1) == '5'||programaSub[i].charAt(1) == '6'||programaSub[i].charAt(1) == '7'||programaSub[i].charAt(1) == '8'||programaSub[i].charAt(1) == '9'){
                                 interprete.interpretar(programa);
                                 System.out.println(programaSub[i]);
-                                System.out.println("Error Sintaxis elemento invalido");
+                                System.out.println("Error de sintaxis");
                                 System.exit(0);
                             }
                             else if(programaSub[i].contains("+") || programaSub[i].contains("-") || programaSub[i].contains("/") || programaSub[i].contains("*") || programaSub[i].contains("%")){
                                 if(programaSub[i].contains("<") || programaSub[i].contains("<=") || programaSub[i].contains(">") || programaSub[i].contains(">=") || programaSub[i].contains("==") || programaSub[i].contains("!=")){
                                     interprete.interpretar(programa);
                                     System.out.println(programaSub[i]);
-                                    System.out.println("Error Sintaxis elemento invalido");
+                                    System.out.println("Error de sintaxis");
                                     System.exit(0);
                                 }
                                 else{
@@ -173,7 +179,7 @@ public class t2 {
                                             if(programaSub[i].charAt(j+1) == '+' || programaSub[i].charAt(j+1) == '-' || programaSub[i].charAt(j+1) == '/' || programaSub[i].charAt(j+1) == '*' || programaSub[i].charAt(j+1) == '%'){
                                                 interprete.interpretar(programa);
                                                 System.out.println(programaSub[i]);
-                                                System.out.println("Error Sintaxis elementos consecutivos");
+                                                System.out.println("Error de sintaxis");
                                                 System.exit(0);
                                             }
 
@@ -183,28 +189,38 @@ public class t2 {
                                         if(programaSub[i].charAt(j) == '$' && (programaSub[i].charAt(j+1) == '0' || programaSub[i].charAt(j+1) == '1' || programaSub[i].charAt(j+1) == '2' || programaSub[i].charAt(j+1) == '3'|| programaSub[i].charAt(j+1) == '4'|| programaSub[i].charAt(j+1) == '5'|| programaSub[i].charAt(j+1) == '6'|| programaSub[i].charAt(j+1) == '7'|| programaSub[i].charAt(j+1) == '8'|| programaSub[i].charAt(j+1) == '9')){
                                             interprete.interpretar(programa);
                                             System.out.println(programaSub[i]);
-                                            System.out.println("Error");
+                                            System.out.println("Error de sintaxis");
                                             System.exit(0);
                                         }
 
+                                    }
+                                    
+                                    for (int j = 0; j < programaSub[i].length()-1; j++) {
+                                        if((programaSub[i].charAt(j)=='+' || programaSub[i].charAt(j)=='-' || programaSub[i].charAt(j)=='/' || programaSub[i].charAt(j)=='*' || programaSub[i].charAt(j)=='%' || programaSub[i].charAt(j)=='=') && Character.isLetter(programaSub[i].charAt(j+1))){
+                                            System.out.println(programaSub[i]);
+                                            System.out.println("Error de sintaxis");
+                                            System.exit(0);
+                                        }
+                                        
+                                        
                                     }
                                     //System.exit(0);
                                     if(!programaSub[i].matches("[\\$\\+\\-\\*\\/\\%a-z0-9;=]+")){
                                         interprete.interpretar(programa);
                                         System.out.println(programaSub[i]);
-                                        System.out.println("Error");
+                                        System.out.println("Error de sintaxis");
                                         System.exit(0);
                                     }
                                 }
                             }
                             else{
                                 if(programaSub[i].matches("\\$[a-z][a-z0-9]*=[0-9]+;") || programaSub[i].matches("\\$[a-z][a-z0-9]*;") || programaSub[i].matches("\\$[a-z][a-z0-9]*=\\$[a-z][a-z0-9]*;")){
-
+                                    
                                 }
                                 else{
                                     interprete.interpretar(programa);
                                     System.out.println(programaSub[i]);
-                                    System.out.println("Error Sintaxis asignacion");
+                                    System.out.println("Error de sintaxis");
                                     System.exit(0);
                                 }
                             }
@@ -221,19 +237,17 @@ public class t2 {
                             else{
                                 interprete.interpretar(programa);
                                 System.out.println(programaSub[i]);
-                                System.out.println("Error Sintaxis condición");
+                                System.out.println("Error de sintaxis");
                                 System.exit(0);
                             }
 
                         }
-                        //System.out.println(programaSub[i]);
                     }
-                    //System.out.println("");
                     programa.add(line);
 
                 }
                 else{
-                    System.out.println("Error, parentesis no balanceados");
+                    System.out.println("Error de sintaxis");
                     System.exit(0);
                 }
             }
